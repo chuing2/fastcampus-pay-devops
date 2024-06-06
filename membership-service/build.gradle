@@ -30,3 +30,8 @@ docker {
     files tasks.bootJar.outputs.files
     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
+
+
+bootJar {
+    archiveFileName = "${project.name}.jar"
+}
