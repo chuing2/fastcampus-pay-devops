@@ -5,9 +5,7 @@ env:
   
 on:
   push:
-    branches: [ "devops1" ]
-  pull_request:
-    branches: [ "devops1" ]
+    branches: [ "devops2" ]
 
 jobs:
 
@@ -37,3 +35,10 @@ jobs:
       run: |
         envsubst < Dockerfile.template | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        
+    - name: Checkout Helm Repository
+      uses: actions/checkout@v4
+      with:
+        repository: chuing2/fastcampus-pay-helm-charts
+        path: helm-chart
+        ref: main
