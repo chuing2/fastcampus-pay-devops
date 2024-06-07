@@ -51,7 +51,7 @@ jobs:
     - name: Change Image tag of the Helm value
       uses: mikefarah/yq@v4.34.1
       with:
-        cmd: yq -i '.image.tag' = "${{ env.BUILD_ID }}"'  helm-chart/${{ env.HELM_VALUE }}
+        cmd: yq -i '.image.tag = "${{ env.BUILD_ID }}"'  helm-chart/${{ env.HELM_VALUE }}
         
     - name: Commit and Push HELM changes
       run: |
@@ -59,7 +59,7 @@ jobs:
         git config --local user.email "chuing@daum.net"
         git config --local user.name "chuing2"
         git add .
-        gut commit -m "Commit HELM changes: ${{ env.ECR_REPOSITORY }}:${{ env.BUILD_ID }}"
+        git commit -m "Commit HELM changes: ${{ env.ECR_REPOSITORY }}: ${{ env.BUILD_ID }}"
         current_branch=$(git branch --show-current)
         git checkout -b ${{ env.HELM_BRANCH }} && git merge ${current_branch}
         git push --force origin ${{ env.HELM_BRANCH }}
