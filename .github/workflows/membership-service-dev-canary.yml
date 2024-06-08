@@ -6,7 +6,6 @@ env:
   HELM_VALUE: membership-service-chart-canary/values-dev.yaml
   HELM_BRANCH: dev-canary
   
-  
 on:
   push:
     branches: [ "devops3" ]
