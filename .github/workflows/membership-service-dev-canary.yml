@@ -1,4 +1,4 @@
-name: Membership Service - DEV Canary
+name: Membership Service -DEV Canary
 
 env:
   MODULE: membership-service
